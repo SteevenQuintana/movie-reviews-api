@@ -7,6 +7,9 @@ const generateToken = (id: string) => {
   return jwt
 }
 
-const verifyToken = () => {}
+const verifyToken = (jwt: string) => {
+  const isOk = verify(jwt, JWT_SECRET)
+  return isOk
+}
 
 export { generateToken, verifyToken }

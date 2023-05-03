@@ -7,6 +7,8 @@ import {
   updateResponseMovie,
   deleteResponseMovie
 } from '../services/movies.services'
+import { RequestExt } from '../interfaces/req-ext.interface'
+import { Movie } from '../interfaces/movie.interface'
 
 const getMovie = async (req: Request, res: Response) => {
   try {
@@ -40,12 +42,21 @@ const updateMovie = async (req: Request, res: Response) => {
   }
 }
 
-const postMovie = async (req: Request, res: Response) => {
+const postMovie = async (req: RequestExt, res: Response) => {
   try {
-    const { body } = req
-    const responseMovie = await insertMovie(body)
+    const { body, user } = req
 
-    res.send(responseMovie)
+    const newMovie: Movie = {
+      movieName: body.movieName,
+      averageRating: body.averageRating,
+      idUser: user?.id
+    }
+
+    const responseMovie = await insertMovie(newMovie)
+
+    res.send({
+      movie: responseMovie
+    })
   } catch (e) {
     handleHttp(res, 'Error posting movie', e)
   }

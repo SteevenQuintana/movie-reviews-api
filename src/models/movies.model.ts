@@ -10,6 +10,9 @@ const MovieSchema = new Schema<Movie>(
     averageRating: {
       type: Number,
       required: true
+    },
+    idUser: {
+      type: String
     }
   },
   {

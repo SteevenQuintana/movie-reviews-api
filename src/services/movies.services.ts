@@ -1,8 +1,8 @@
 import { Movie } from '../interfaces/movie.interface'
 import MovieModel from '../models/movies.model'
 
-const insertMovie = async (movie: Movie) => {
-  return await MovieModel.create(movie)
+const insertMovie = async ({ movieName, averageRating, idUser }: Movie) => {
+  return await MovieModel.create({ movieName, averageRating, idUser })
 }
 
 const getResponseMovies = async () => {
