@@ -4,7 +4,8 @@ import {
   getMovie,
   getMovies,
   postMovie,
-  updateMovie
+  updateMovie,
+  addComment
 } from '../controllers/movies.controller'
 import { checkJWT } from '../middleware/session'
 
@@ -15,5 +16,6 @@ router.get('/:id', getMovie)
 router.post('/', checkJWT, postMovie)
 router.put('/:id', checkJWT, updateMovie)
 router.delete('/:id', checkJWT, deleteMovie)
+router.post('/:id/comments', checkJWT, addComment)
 
 export { router }

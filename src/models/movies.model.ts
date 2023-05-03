@@ -1,5 +1,6 @@
 import { Schema, Types, model, Model } from 'mongoose'
 import { Movie } from '../interfaces/movie.interface'
+import { CommentSchema } from './comment.model'
 
 const MovieSchema = new Schema<Movie>(
   {
@@ -13,7 +14,8 @@ const MovieSchema = new Schema<Movie>(
     },
     idUser: {
       type: String
-    }
+    },
+    comments: [CommentSchema]
   },
   {
     timestamps: true,

@@ -1,23 +1,18 @@
-import { Schema, model } from 'mongoose'
-import { Comment } from '../interfaces/comment.interface'
+import { Schema, Types, model, Model } from 'mongoose'
+import { MovieComment } from '../interfaces/comment.interface'
 
-const CommentSchema = new Schema<Comment>(
+export const CommentSchema = new Schema<MovieComment>(
   {
-    comment: {
+    text: {
       type: String,
       required: true
     },
-    rating: {
+    raiting: {
       type: Number,
       required: true
     },
     userId: {
       type: String
-    },
-    movieId: {
-      type: Schema.Types.ObjectId,
-      required: true,
-      ref: 'movies'
     }
   },
   {

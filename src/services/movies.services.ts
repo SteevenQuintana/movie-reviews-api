@@ -1,3 +1,4 @@
+import { MovieComment } from '../interfaces/comment.interface'
 import { Movie } from '../interfaces/movie.interface'
 import MovieModel from '../models/movies.model'
 
@@ -29,10 +30,24 @@ const deleteResponseMovie = async (id: string) => {
   return await MovieModel.deleteOne({ _id: id })
 }
 
+const createComment = async (id: string, comment: MovieComment) => {
+  const movie = await MovieModel.findById(id)
+
+  if (!movie) {
+    throw new Error('MOVIE_NOT_FOUND')
+  }
+
+  movie.comments.push(comment)
+  await movie.save()
+
+  return movie
+}
+
 export {
   insertMovie,
   getResponseMovies,
   getResponseMovie,
   updateResponseMovie,
-  deleteResponseMovie
+  deleteResponseMovie,
+  createComment
 }

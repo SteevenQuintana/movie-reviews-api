@@ -1,8 +1,7 @@
 import { Types } from 'mongoose'
 
-export interface Comment {
-  comment: string
-  rating: number
+export interface MovieComment {
+  text: string
+  raiting: number
   userId: string
-  movieId: Types.ObjectId
 }

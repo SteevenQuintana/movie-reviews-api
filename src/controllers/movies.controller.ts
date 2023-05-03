@@ -5,10 +5,12 @@ import {
   getResponseMovies,
   getResponseMovie,
   updateResponseMovie,
-  deleteResponseMovie
+  deleteResponseMovie,
+  createComment
 } from '../services/movies.services'
 import { RequestExt } from '../interfaces/req-ext.interface'
 import { Movie } from '../interfaces/movie.interface'
+import { MovieComment } from '../interfaces/comment.interface'
 
 const getMovie = async (req: Request, res: Response) => {
   try {
@@ -49,7 +51,8 @@ const postMovie = async (req: RequestExt, res: Response) => {
     const newMovie: Movie = {
       movieName: body.movieName,
       averageRating: body.averageRating,
-      idUser: user?.id
+      idUser: user?.id,
+      comments: []
     }
 
     const responseMovie = await insertMovie(newMovie)
@@ -72,4 +75,23 @@ const deleteMovie = async (req: Request, res: Response) => {
   }
 }
 
-export { getMovie, getMovies, updateMovie, postMovie, deleteMovie }
+const addComment = async (req: RequestExt, res: Response) => {
+  try {
+    const { id } = req.params
+    const { body, user } = req
+
+    const comment: MovieComment = {
+      text: body.text,
+      raiting: body.raiting,
+      userId: user?.id
+    }
+
+    const responseMovie = await createComment(id, comment)
+
+    res.send(responseMovie)
+  } catch (e) {
+    handleHttp(res, 'Error adding comment to movie', e)
+  }
+}
+
+export { getMovie, getMovies, updateMovie, postMovie, deleteMovie, addComment }
