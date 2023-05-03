@@ -2,22 +2,19 @@ import { Movie } from '../interfaces/movie.interface'
 import MovieModel from '../models/movies.model'
 
 const insertMovie = async (movie: Movie) => {
-  const responseInsert = await MovieModel.create(movie)
-  return responseInsert
+  return await MovieModel.create(movie)
 }
 
 const getResponseMovies = async () => {
-  const responseMovie = await MovieModel.find({})
-  return responseMovie
+  return await MovieModel.find({})
 }
 
 const getResponseMovie = async (id: string) => {
-  const responseMovies = await MovieModel.findOne({ _id: id })
-  return responseMovies
+  return await MovieModel.findOne({ _id: id })
 }
 
 const updateResponseMovie = async (id: string, data: Movie) => {
-  const responseUpdatedMovie = await MovieModel.findOneAndUpdate(
+  return await MovieModel.findOneAndUpdate(
     {
       _id: id
     },
@@ -26,12 +23,10 @@ const updateResponseMovie = async (id: string, data: Movie) => {
       new: true
     }
   )
-  return responseUpdatedMovie
 }
 
 const deleteResponseMovie = async (id: string) => {
-  const responseMovies = await MovieModel.deleteOne({ _id: id })
-  return responseMovies
+  return await MovieModel.deleteOne({ _id: id })
 }
 
 export {

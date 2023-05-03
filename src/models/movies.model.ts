@@ -1,20 +1,5 @@
 import { Schema, Types, model, Model } from 'mongoose'
-import { Movie, User } from '../interfaces/movie.interface'
-
-const UserSchema = new Schema<User>(
-  {
-    username: {
-      type: String
-    },
-    email: {
-      type: String
-    }
-  },
-  {
-    timestamps: true,
-    versionKey: false
-  }
-)
+import { Movie } from '../interfaces/movie.interface'
 
 const MovieSchema = new Schema<Movie>(
   {

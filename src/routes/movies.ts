@@ -10,10 +10,10 @@ import { logMiddleware } from '../middleware/log'
 
 const router = Router()
 
-router.get('/', logMiddleware, getMovies)
+router.get('/', getMovies)
 router.get('/:id', getMovie)
 router.post('/', logMiddleware, postMovie)
-router.put('/:id', updateMovie)
-router.delete('/:id', deleteMovie)
+router.put('/:id', logMiddleware, updateMovie)
+router.delete('/:id', logMiddleware, deleteMovie)
 
 export { router }
