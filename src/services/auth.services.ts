@@ -25,7 +25,6 @@ const registerNewUser = async ({ username, email, password, roles }: User) => {
     const role = await RoleModel.findOne({ roleName: 'user' })
     newUser.roles = [role?._id] as Types.ObjectId[]
   }
-  console.log(newUser)
 
   return await UserModel.create(newUser)
 }
@@ -37,7 +36,6 @@ const loginUser = async ({ email, password }: Auth) => {
 
   const passHash = userBD.password
   const isCorrect = await verified(password, passHash)
-  console.log(userBD)
   if (!isCorrect) return 'PASSWORD_INCORRECT'
   const token = generateToken(userBD.email)
 

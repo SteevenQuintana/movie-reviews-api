@@ -14,7 +14,7 @@ const getUser = async (req: Request, res: Response) => {
     const data = responseUser ? responseUser : 'NOT_FOUND'
     res.send(data)
   } catch (e) {
-    handleHttp(res, 'Error getting User')
+    handleHttp(res, 'Error getting user')
   }
 }
 
@@ -23,7 +23,7 @@ const getUsers = async (req: Request, res: Response) => {
     const responseUsers = await getResponseUsers()
     res.send(responseUsers)
   } catch (e) {
-    handleHttp(res, 'Error getting Users')
+    handleHttp(res, 'Error getting users')
   }
 }
 
