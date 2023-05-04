@@ -1,7 +1,9 @@
 import CommentModel from '../models/comment.model'
 
-const getResponseComments = async () => {
+const getResponseComments = async (page: number, limit: number) => {
   return await CommentModel.find({})
+    .skip((page - 1) * 10)
+    .limit(limit)
 }
 
 const getCommentsByUser = async (email: string) => {

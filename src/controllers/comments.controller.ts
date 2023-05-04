@@ -19,8 +19,12 @@ const getCommentByEmail = async (req: Request, res: Response) => {
 
 const getComments = async (req: Request, res: Response) => {
   try {
-    const responseComments = await getResponseComments()
-    res.send(responseComments)
+    const { page = 1, limit = 10 } = req.query
+    const responseComments = await getResponseComments(
+      Number(page),
+      Number(limit)
+    )
+    res.send({ page, limit, responseComments })
   } catch (e) {
     handleHttp(res, 'Error getting comments')
   }

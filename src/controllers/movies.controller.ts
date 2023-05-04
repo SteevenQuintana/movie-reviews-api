@@ -25,8 +25,9 @@ const getMovie = async (req: Request, res: Response) => {
 
 const getMovies = async (req: Request, res: Response) => {
   try {
-    const responseMovies = await getResponseMovies()
-    res.send(responseMovies)
+    const { page = 1, limit = 10 } = req.query
+    const responseMovies = await getResponseMovies(Number(page), Number(limit))
+    res.send({ page, limit, responseMovies })
   } catch (e) {
     handleHttp(res, 'Error getting movies')
   }

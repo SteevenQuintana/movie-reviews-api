@@ -8,8 +8,10 @@ const insertMovie = async ({ movieName, averageRating, idUser }: Movie) => {
   return await MovieModel.create({ movieName, averageRating, idUser })
 }
 
-const getResponseMovies = async () => {
+const getResponseMovies = async (page: number, limit: number) => {
   return await MovieModel.find({})
+    .skip((page - 1) * 10)
+    .limit(limit)
 }
 
 const getResponseMovie = async (id: string) => {
