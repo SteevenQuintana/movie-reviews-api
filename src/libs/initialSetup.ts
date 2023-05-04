@@ -5,7 +5,7 @@ export const createRoles = async () => {
 
   if (count > 0) return
 
-  const values = await Promise.all([
+  await Promise.all([
     RoleModel.create({ roleName: 'user' }),
     RoleModel.create({ roleName: 'admin' })
   ])
