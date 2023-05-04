@@ -7,13 +7,13 @@ import {
   updateMovie,
   addComment
 } from '../controllers/movies.controller'
-import { checkJWT } from '../middleware/session'
+import { checkJWT, isAdmin } from '../middleware/session'
 
 const router = Router()
 
 router.get('/', getMovies)
 router.get('/:id', getMovie)
-router.post('/', checkJWT, postMovie)
+router.post('/', [checkJWT, isAdmin], postMovie)
 router.put('/:id', checkJWT, updateMovie)
 router.delete('/:id', checkJWT, deleteMovie)
 
