@@ -2,8 +2,15 @@ import { Request, Response } from 'express'
 import { loginUser, registerNewUser } from '../services/auth.services'
 
 const registerCtrl = async (req: Request, res: Response) => {
-  const { username, email, password } = req.body
-  const responseUser = await registerNewUser({ username, email, password })
+  const { username, email, password, roles } = req.body
+
+  const responseUser = await registerNewUser({
+    username,
+    email,
+    password,
+    roles
+  })
+
   res.send(responseUser)
 }
 

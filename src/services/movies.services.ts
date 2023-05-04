@@ -1,6 +1,8 @@
 import { MovieComment } from '../interfaces/comment.interface'
 import { Movie } from '../interfaces/movie.interface'
+import CommentModel from '../models/comment.model'
 import MovieModel from '../models/movies.model'
+import { averageRatingHandle } from '../utils/average.handle'
 
 const insertMovie = async ({ movieName, averageRating, idUser }: Movie) => {
   return await MovieModel.create({ movieName, averageRating, idUser })
@@ -38,7 +40,10 @@ const createComment = async (id: string, comment: MovieComment) => {
   }
 
   movie.comments.push(comment)
+  movie.averageRating = averageRatingHandle(movie.comments)
+
   await movie.save()
+  await CommentModel.create(comment)
 
   return movie
 }

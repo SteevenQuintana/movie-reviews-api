@@ -1,13 +1,13 @@
 {
   "name": "movie-reviews",
   "version": "1.0.0",
-  "description": "",
+  "description": "API for getting and posting movie reviews",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./src/app.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Steven Quintana",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

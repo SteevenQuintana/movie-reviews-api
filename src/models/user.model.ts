@@ -1,4 +1,4 @@
-import { Schema, Types, model, Model } from 'mongoose'
+import { Schema, Types, model } from 'mongoose'
 import { User } from '../interfaces/user.interface'
 
 const UserSchema = new Schema<User>(
@@ -15,7 +15,13 @@ const UserSchema = new Schema<User>(
     password: {
       type: String,
       required: true
-    }
+    },
+    roles: [
+      {
+        type: Types.ObjectId,
+        ref: 'roles'
+      }
+    ]
   },
   {
     timestamps: true,

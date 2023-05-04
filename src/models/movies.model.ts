@@ -1,4 +1,4 @@
-import { Schema, Types, model, Model } from 'mongoose'
+import { Schema, model } from 'mongoose'
 import { Movie } from '../interfaces/movie.interface'
 import { CommentSchema } from './comment.model'
 
@@ -9,8 +9,7 @@ const MovieSchema = new Schema<Movie>(
       required: true
     },
     averageRating: {
-      type: Number,
-      required: true
+      type: Number
     },
     idUser: {
       type: String

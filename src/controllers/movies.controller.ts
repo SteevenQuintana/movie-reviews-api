@@ -50,7 +50,6 @@ const postMovie = async (req: RequestExt, res: Response) => {
 
     const newMovie: Movie = {
       movieName: body.movieName,
-      averageRating: body.averageRating,
       idUser: user?.id,
       comments: []
     }
@@ -83,7 +82,8 @@ const addComment = async (req: RequestExt, res: Response) => {
     const comment: MovieComment = {
       text: body.text,
       raiting: body.raiting,
-      userId: user?.id
+      userId: user?.id,
+      movieId: id
     }
 
     const responseMovie = await createComment(id, comment)

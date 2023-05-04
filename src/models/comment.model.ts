@@ -1,4 +1,4 @@
-import { Schema, Types, model, Model } from 'mongoose'
+import { Schema, model } from 'mongoose'
 import { MovieComment } from '../interfaces/comment.interface'
 
 export const CommentSchema = new Schema<MovieComment>(
@@ -12,6 +12,9 @@ export const CommentSchema = new Schema<MovieComment>(
       required: true
     },
     userId: {
+      type: String
+    },
+    movieId: {
       type: String
     }
   },
