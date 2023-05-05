@@ -19,8 +19,6 @@ const router = Router()
  *    description: Retrieve a list of movies with pagination.
  *    tags:
  *      - Movies
- *    security:
- *      - bearerAuth: []
  *    parameters:
  *      - in: query
  *        name: page
@@ -72,7 +70,7 @@ const router = Router()
  *      content:
  *        application/json:
  *          schema:
- *            $ref: '#/components/schemas/movie'
+ *            $ref: '#/components/schemas/movieRequest'
  *    responses:
  *      '200':
  *        description: The new movie.
@@ -96,8 +94,6 @@ const router = Router()
  *    description: Retrieve a movie by its ID.
  *    tags:
  *      - Movies
- *    security:
- *      - bearerAuth: []
  *    parameters:
  *      - in: path
  *        name: id
@@ -123,30 +119,29 @@ const router = Router()
  *    description: Update a movie by ID
  *    tags:
  *      - Movies
+ *    security:
+ *      - bearerAuth: []
  *    parameters:
  *      - in: path
  *        name: id
- *        description: ID of the movie to update
- *        required: true
+ *        description: The ID of the movie to update.
  *        schema:
  *          type: string
- *          example: 61148f46c2ffab00362d3f3e
- *      - in: header
- *        name: Authorization
- *        description: Bearer token
  *        required: true
- *        schema:
- *          type: string
- *          example: Bearer xxxxxx
- *      - in: body
- *        name: body
- *        description: Request body for updating a movie
- *        required: true
- *        schema:
- *          $ref: '#/components/schemas/movie'
+ *    requestBody:
+ *      description: The new movie name.
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            properties:
+ *              movieName:
+ *                type: string
+ *                description: The new name of the movie.
+ *                example: The Matrix reloaded
  *    responses:
  *      '200':
- *        description: OK
+ *        description: the movie was updated successfully
  *        content:
  *          application/json:
  *            schema:
@@ -162,6 +157,8 @@ const router = Router()
  *    description: Delete a movie by ID
  *    tags:
  *      - Movies
+ *    security:
+ *      - bearerAuth: []
  *    parameters:
  *      - in: path
  *        name: id
@@ -169,21 +166,13 @@ const router = Router()
  *        required: true
  *        schema:
  *          type: string
- *          example: 61148f46c2ffab00362d3f3e
- *      - in: header
- *        name: Authorization
- *        description: Bearer token
- *        required: true
- *        schema:
- *          type: string
- *          example: Bearer xxxxxx
  *    responses:
  *      '200':
- *        description: OK
+ *        description: Movie was deleted successfully
  *        content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/movie'
+ *              $ref: '#/components/schemas/deleteResponse'
  *      '400':
  *        description: Bad request.
  *      '401':
@@ -205,13 +194,13 @@ const router = Router()
  *        description: ID of the movie to add a comment to
  *        schema:
  *          type: string
- *          example: 616a782b44f8b6a3b6d7469d
- *      - in: body
- *        name: comment
- *        description: Comment object to be added to the movie
- *        required: true
- *        schema:
- *          $ref: '#/components/schemas/comment'
+ *    requestBody:
+ *      description: Comment object to be added to the movie.
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/commentRequest'
  *    responses:
  *      '201':
  *        description: Created

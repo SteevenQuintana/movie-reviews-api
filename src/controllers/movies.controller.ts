@@ -41,7 +41,8 @@ const updateMovie = async (req: Request, res: Response) => {
     const responseUpdateMovie = await updateResponseMovie(id, body)
     res.send(responseUpdateMovie)
   } catch (e) {
-    handleHttp(res, 'Error updating movie')
+    console.log(e)
+    handleHttp(res, 'Error updating movie', e)
   }
 }
 

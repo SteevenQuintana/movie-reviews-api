@@ -18,12 +18,16 @@ const getResponseMovie = async (id: string) => {
   return await MovieModel.findOne({ _id: id })
 }
 
-const updateResponseMovie = async (id: string, data: Movie) => {
+const updateResponseMovie = async (
+  id: string,
+  movieName: { movieName: string }
+) => {
+  console.log(movieName)
   return await MovieModel.findOneAndUpdate(
     {
       _id: id
     },
-    data,
+    movieName,
     {
       new: true
     }

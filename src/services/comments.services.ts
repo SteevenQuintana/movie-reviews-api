@@ -6,7 +6,7 @@ const getResponseComments = async (page: number, limit: number) => {
     .limit(limit)
 }
 
-const getCommentsByUser = async (email: string) => {
+const getCommentsByUseremail = async (email: string) => {
   return await CommentModel.find({ userId: email })
 }
 
@@ -14,4 +14,4 @@ const deleteResponseComment = async (id: string) => {
   return await CommentModel.deleteOne({ _id: id })
 }
 
-export { getCommentsByUser, getResponseComments, deleteResponseComment }
+export { getCommentsByUseremail, getResponseComments, deleteResponseComment }

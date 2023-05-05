@@ -80,6 +80,18 @@ const swaggerDefinition: OAS3Definition = {
           ]
         }
       },
+      movieRequest: {
+        type: 'object',
+        require: ['movieName'],
+        properties: {
+          movieName: {
+            type: 'string'
+          }
+        },
+        example: {
+          movieName: 'The Shawshank Redemption'
+        }
+      },
 
       comment: {
         type: 'object',
@@ -101,6 +113,19 @@ const swaggerDefinition: OAS3Definition = {
           movieId: '23456',
           createdAt: '2023-05-04T12:34:56.789Z',
           updatedAt: '2023-05-04T12:34:56.789Z'
+        }
+      },
+
+      commentRequest: {
+        type: 'object',
+        require: ['text', 'raiting'],
+        properties: {
+          text: { type: 'string' },
+          raiting: { type: 'number' }
+        },
+        example: {
+          text: 'This movie was great!',
+          raiting: 9
         }
       },
 
@@ -187,6 +212,22 @@ const swaggerDefinition: OAS3Definition = {
           email: 'johndoe@example.com',
           password: 'password'
         }
+      },
+
+      deleteResponse: {
+        type: 'object',
+        properties: {
+          acknowledged: {
+            type: 'boolean',
+            description:
+              'Indicates whether the operation was acknowledged by the server.'
+          },
+          deletedCount: {
+            type: 'integer',
+            description: 'The number of documents deleted.'
+          }
+        },
+        required: ['acknowledged', 'deletedCount']
       }
     }
   }

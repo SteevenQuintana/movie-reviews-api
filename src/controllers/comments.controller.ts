@@ -2,14 +2,14 @@ import { Request, Response } from 'express'
 import { handleHttp } from '../utils/error.handle'
 import {
   getResponseComments,
-  getCommentsByUser,
+  getCommentsByUseremail,
   deleteResponseComment
 } from '../services/comments.services'
 
 const getCommentByEmail = async (req: Request, res: Response) => {
   try {
-    const { email } = req.body
-    const responseComment = await getCommentsByUser(email)
+    const { id: email } = req.params
+    const responseComment = await getCommentsByUseremail(email)
     const data = responseComment ? responseComment : 'NOT_FOUND'
     res.send(data)
   } catch (e) {
