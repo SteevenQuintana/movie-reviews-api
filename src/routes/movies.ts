@@ -211,7 +211,7 @@ const router = Router()
  *        description: Comment object to be added to the movie
  *        required: true
  *        schema:
- *          $ref: '#/components/schemas/Comment'
+ *          $ref: '#/components/schemas/comment'
  *    responses:
  *      '201':
  *        description: Created
@@ -221,7 +221,7 @@ const router = Router()
  *              type: object
  *              properties:
  *                comment:
- *                  $ref: '#/components/schemas/Comment'
+ *                  $ref: '#/components/schemas/comment'
  *      '400':
  *        description: Invalid request
  *      '401':

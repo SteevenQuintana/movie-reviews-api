@@ -38,7 +38,7 @@ const swaggerDefinition: OAS3Definition = {
           comments: {
             type: 'array',
             items: {
-              $ref: '#/schemas/comment'
+              $ref: '#/components/schemas/comment'
             }
           },
           createdAt: {
@@ -122,7 +122,7 @@ const swaggerDefinition: OAS3Definition = {
           password: { type: 'string' },
           roles: {
             type: 'array',
-            items: { $ref: '#/schemas/role' }
+            items: { $ref: '#/components/schemas/role' }
           }
         },
         example: {

@@ -17,7 +17,7 @@ app.use(express.json())
 app.use(router)
 app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerSetup))
 
-db().then(() => console.log('conexion ready!'))
+db().then(() => console.log('database connection is ready'))
 
 app.set('pkg', pkg)
 app.get('/', (req, res) => {
@@ -29,4 +29,4 @@ app.get('/', (req, res) => {
   })
 })
 
-app.listen(PORT, () => console.log(`Listo en el port: ${PORT}`))
+app.listen(PORT)
