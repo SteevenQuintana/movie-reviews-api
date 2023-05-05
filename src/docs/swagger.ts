@@ -8,7 +8,10 @@ const swaggerDefinition: OAS3Definition = {
   },
   servers: [
     {
-      url: 'http://localhost:3002'
+      url: `${process.env.BASE_URL}`
+    },
+    {
+      url: `http://localhost:${process.env.PORT}`
     }
   ],
   components: {
