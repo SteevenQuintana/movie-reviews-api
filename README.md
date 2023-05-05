@@ -3,6 +3,9 @@
 
 This project is a RESTful API that allows users to view, create and update movies, post comments, perform authentication and more. The API is built using MongoDB, Express and TypeScript.
 
+## How to use the API
+
+In this video, I will explore how to use a Movie API and it's authorization for getting access to some endpoints  [Exploring MOVIE API](https://www.youtube.com/watch?v=JIf3LH4y_jA)
 
 ## Features
 
