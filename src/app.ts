@@ -5,6 +5,8 @@ import db from './config/mongo'
 import { router } from './routes'
 import pkg from '../package.json'
 import { createRoles } from './libs/initialSetup'
+import swaggerUi from 'swagger-ui-express'
+import swaggerSetup from './docs/swagger'
 
 const PORT = process.env.PORT || 3001
 const app = express()
@@ -13,6 +15,8 @@ createRoles()
 app.use(cors())
 app.use(express.json())
 app.use(router)
+app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerSetup))
+
 db().then(() => console.log('conexion ready!'))
 
 app.set('pkg', pkg)

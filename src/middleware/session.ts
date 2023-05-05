@@ -23,7 +23,7 @@ const checkJWT = (req: RequestExt, res: Response, next: NextFunction) => {
   }
 }
 
-export const checkExistingEmail = async (
+const checkExistingEmail = async (
   req: RequestExt,
   res: Response,
   next: NextFunction
@@ -39,11 +39,7 @@ export const checkExistingEmail = async (
   }
 }
 
-export const isAdmin = async (
-  req: RequestExt,
-  res: Response,
-  next: NextFunction
-) => {
+const isAdmin = async (req: RequestExt, res: Response, next: NextFunction) => {
   try {
     const user = await UserModel.findOne({ email: req.user?.id })
     const roles = await RoleModel.find({ _id: { $in: user?.roles } })
@@ -61,4 +57,4 @@ export const isAdmin = async (
   }
 }
 
-export { checkJWT }
+export { checkJWT, checkExistingEmail, isAdmin }
