@@ -5,7 +5,7 @@ This project is a RESTful API that allows users to view, create and update movie
 
 ## How to use the API
 
-In this video, I will explore how to use a Movie API and it's authorization for getting access to some endpoints  [Exploring MOVIE API](https://www.youtube.com/watch?v=JIf3LH4y_jA)
+In this video, I will explore how to use the Movie API and it's authorization for getting access to some endpoints  [Exploring MOVIE API](https://www.youtube.com/watch?v=JIf3LH4y_jA)
 
 ## Features
 
